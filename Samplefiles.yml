@@ -1,0 +1,15 @@
+---
+- name: Playbook to install genric tools
+  hosts: test
+  gather_facts: yes
+  become: yes
+  become_user: root
+  vars:
+    TFROM: 1.8.5
+  tasts:
+    - name: Check the host name
+      shell: cat /etc/lsb-release
+    - name: perform yum update
+      shell: yum update
+    - name: install tools
+      shell: yum install -y unzip jq stress net-tools
